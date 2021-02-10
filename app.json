@@ -1,0 +1,12 @@
+{
+  "name": "react-native-lecture",
+  "displayName": "react-native-lecture",
+  "expo": {
+    "name": "react-native-lecture",
+    "slug": "react-native-lecture",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
