@@ -2,8 +2,9 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addAction } from '../redux/actions'
+import { removeAction } from '../redux/actions'
 
 import { LISTDATA } from '../shared/list'
 
@@ -26,6 +27,14 @@ const Details = ( { route, navigation }) => {
 
   const dispatch = useDispatch();
 
+  const actions = useSelector(state => state.actions);
+  console.log("--actions--");
+  console.log(actions);
+
+  const isExistedAction = actions.filter(item => item.id == id).length > 0 ? true : false;
+  console.log("--isExistedAction--");
+  console.log(isExistedAction);
+
   return (
     <View
       style={{
@@ -42,11 +51,24 @@ const Details = ( { route, navigation }) => {
         <Text style={{marginBottom: 10}}>
           {item.description}
         </Text>
-        <Button
-          onPress={()=>{dispatch(addAction(item))}}
-          icon={<Icon name='checkmark' type='ionicon' color='#ffffff' />}
-          buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, backgroundColor:"tomato"}}
-          title='ACTION' />        
+        {
+          isExistedAction 
+            ?
+            <Button
+              onPress={()=>{dispatch(removeAction(id))}}
+              icon={<Icon name='close' type='ionicon' color='#ffffff' />}
+              buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, backgroundColor:"gray"}}
+              title='REMOVE' 
+            /> 
+            :
+            <Button
+              onPress={()=>{dispatch(addAction(item))}}
+              icon={<Icon name='checkmark' type='ionicon' color='#ffffff' />}
+              buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, backgroundColor:"tomato"}}
+              title='ACTION' 
+            />    
+        }
+            
       </Card>
     </View>
   )
