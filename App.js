@@ -16,12 +16,17 @@ import Actions from './components/Actions'
 // https://ionicons.com/
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { createStore } from 'redux'
+import { createStore, applyMiddleware  } from 'redux'
 import { Provider } from 'react-redux'
+import createSagaMiddleware from 'redux-saga'
 
 import rootReducer from './redux/reducers'
+import rootSaga from './redux/sagas'
 
-const store = createStore(rootReducer)
+const sagaMiddleWare = createSagaMiddleware()
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleWare))
+
+sagaMiddleWare.run(rootSaga)
 
 const Tab = createBottomTabNavigator();
 const ListStack = createStackNavigator();

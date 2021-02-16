@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, View } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { addAction } from '../redux/actions'
-import { removeAction } from '../redux/actions'
+import { addAction, removeAction } from '../redux/actions/actions'
 
 import { LISTDATA } from '../shared/list'
 
@@ -16,14 +15,14 @@ import { LISTDATA } from '../shared/list'
 const Details = ( { route, navigation }) => {
 
   // navigation.navigate("스크린이름", 매개변수)
-  console.log("--detail");
-  console.log(route.params);  // navigate로 넘어온 매개변수
+  // console.log("--detail");
+  // console.log(route.params);  // navigate로 넘어온 매개변수
 
   // const id = route.params.id;
   const { id } = route.params;
 
   const item = LISTDATA.filter(item => item.id == id)[0];
-  console.log(item);
+  // console.log(item);
 
   const dispatch = useDispatch();
 

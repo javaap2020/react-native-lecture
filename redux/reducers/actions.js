@@ -14,7 +14,7 @@
 const actions = (state = [], action) => {
   // action의 type별로 state 제어
   switch (action.type) {
-    case 'ADD_ACTION':
+    case 'ADD_ACTION_SUCCEEDED':
       // return 변경할state
       // 현재 state를 복사하여 변경
       return [
@@ -26,9 +26,13 @@ const actions = (state = [], action) => {
           ...action.payload
         }
       ]
-    case 'REMOVE_ACTION':
+    case 'REMOVE_ACTION_SUCCEEDED':
       return [
         ...state.filter(item => item.id != action.payload)
+      ]
+    case 'FETCH_ACTIONS_SUCCEEDED':
+      return [
+        ...action.payload
       ]
     default:
       return state

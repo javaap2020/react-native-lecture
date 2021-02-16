@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { View } from 'react-native';
 import { ListItem, Avatar, Icon } from 'react-native-elements'
 import { ScrollView } from 'react-native-gesture-handler';
 
-import { removeAction } from '../redux/actions'
+import { fetchActions, removeAction } from '../redux/actions/actions'
 
 const Actions = ({navigation}) => {
 
@@ -13,6 +13,11 @@ const Actions = ({navigation}) => {
   console.log(actions);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log('-- fetch actions --')
+    dispatch(fetchActions())
+  }, []);
 
   return(
     <View style={{flex:1}}>
