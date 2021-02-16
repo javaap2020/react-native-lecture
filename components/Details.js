@@ -49,7 +49,7 @@ const Details = ( { route, navigation }) => {
         justifyContent: "center",
         alignItems: "center"
       }}>
-      <Card>
+      <Card containerStyle={{width:"90%"}}>
         <Card.Title>{item.title}</Card.Title>
         <Card.Divider/>
         <Card.Image source={{uri: item.image}}>

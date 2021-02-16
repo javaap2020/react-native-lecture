@@ -22,7 +22,7 @@ const List = ({ navigation }) => {
 
   const getList = useCallback(async () => {
     const result = await api.list();
-    console.log(result);
+    // console.log(result);
     setList(result.data);
   }, [])
 
