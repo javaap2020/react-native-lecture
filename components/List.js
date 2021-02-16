@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Text, View, Button } from 'react-native';
-
-import { LISTDATA } from '../shared/list'
 
 import { ListItem, Avatar } from 'react-native-elements'
 import { ScrollView } from 'react-native-gesture-handler'
+
+import api from '../api/list'
 
 // 함수의 리턴 값이 JSX.Element면
 // React 컴포넌트가 된다.
@@ -13,8 +13,25 @@ import { ScrollView } from 'react-native-gesture-handler'
 // Navigator로 화면을 이동할 때 컴포넌트 속성으로 전달됨
 const List = ({ navigation }) => {
 
-  const list = LISTDATA;
-  console.log(list);
+  const [list, setList] = useState([]);
+
+  const getList = useCallback(async () => {
+    const result = await api.list();
+    console.log(result);
+    setList(result.data);
+  }, [])
+
+  useEffect(()=>{
+    const unsubscribe  = navigation.addListener(
+      'focus',
+      () => { 
+        console.log('focus') 
+        getList();
+      },
+    );
+
+    return unsubscribe;
+  }, [navigation]);
 
   return (
     <View style={{flex: 1}}>
