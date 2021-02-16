@@ -1,6 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Text, View, Button } from 'react-native';
 
+import { useDispatch } from 'react-redux';
+import { fetchActions } from '../redux/actions/actions'
+
 import { ListItem, Avatar } from 'react-native-elements'
 import { ScrollView } from 'react-native-gesture-handler'
 
@@ -14,6 +17,8 @@ import api from '../api/list'
 const List = ({ navigation }) => {
 
   const [list, setList] = useState([]);
+
+  const dispatch = useDispatch();
 
   const getList = useCallback(async () => {
     const result = await api.list();
@@ -32,6 +37,11 @@ const List = ({ navigation }) => {
 
     return unsubscribe;
   }, [navigation]);
+
+  useEffect(() => {
+    console.log('-- fetch actions --')
+    dispatch(fetchActions())
+  }, []);    
 
   return (
     <View style={{flex: 1}}>
