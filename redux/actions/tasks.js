@@ -4,7 +4,7 @@ export const addTask = payload => ({
 })
 
 export const removeTask = payload => ({
-  type: 'REMOVE_ACTION',
+  type: 'REMOVE_TASK',
   payload
 })
 
