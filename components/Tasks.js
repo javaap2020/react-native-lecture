@@ -5,7 +5,7 @@ import { Text, View } from 'react-native';
 // React 컴포넌트가 된다.
 
 // JSX를 쓸려면 import React from 'react';
-const Actions = () => {
+const Tasks = () => {
   return (
     <View
       style={{
@@ -13,8 +13,8 @@ const Actions = () => {
         justifyContent: "center",
         alignItems: "center"
       }}>
-      <Text>Actions</Text>
+      <Text>Tasks</Text>
     </View>
   )
 }
-export default Actions;
+export default Tasks;

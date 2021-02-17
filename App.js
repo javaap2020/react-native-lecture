@@ -11,7 +11,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Home from './components/Home'
 import List from './components/List'
 import Details from './components/Details'
-import Actions from './components/Actions'
+import Tasks from './components/Tasks'
 
 // https://ionicons.com/
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -54,7 +54,7 @@ const screenOptions = ({ route }) => ({
           ? 'list'
           : 'list-outline'; 
         break;
-      case 'Actions':
+      case 'Tasks':
         iconName = focused
           ? 'checkmark'
           : 'checkmark-outline'; 
@@ -78,7 +78,7 @@ export default function App() {
         <Tab.Navigator screenOptions={screenOptions} tabBarOptions={tabBarOptions}>
           <Tab.Screen name="Home" component={HomeStackScreen} />
           <Tab.Screen name="List" component={ListStackScreen} />
-          <Tab.Screen name="Actions" component={Actions} />
+          <Tab.Screen name="Tasks" component={Tasks} />
         </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
