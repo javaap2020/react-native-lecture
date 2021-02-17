@@ -11,7 +11,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Home from './components/Home'
 import List from './components/List'
 import Details from './components/Details'
-import Actions from './components/Actions'
+import Tasks from './components/Tasks'
 
 // https://ionicons.com/
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -34,7 +34,7 @@ sagaMiddleWare.run(rootSaga)
 const Tab = createBottomTabNavigator();
 const ListStack = createStackNavigator();
 const HomeStack = createStackNavigator();
-const ActionStack = createStackNavigator();
+const TaskStack = createStackNavigator();
 
 const HomeStackScreen = () => {
   return (
@@ -54,12 +54,12 @@ const ListStackScreen = () => {
   )
 }
 
-const ActionStackScreen = () => {
+const TaskStackScreen = () => {
   return (
-    <ActionStack.Navigator>
-      <ActionStack.Screen name="Actions" component={Actions} options={{title:"Actions", headerTitleAlign:"center"}} />
-      <ActionStack.Screen name="Details" component={Details} options={{title:"Details", headerTitleAlign:"center"}}  />
-    </ActionStack.Navigator>
+    <TaskStack.Navigator>
+      <TaskStack.Screen name="Tasks" component={Tasks} options={{title:"Tasks", headerTitleAlign:"center"}} />
+      <TaskStack.Screen name="Details" component={Details} options={{title:"Details", headerTitleAlign:"center"}}  />
+    </TaskStack.Navigator>
   )
 }
 
@@ -81,7 +81,7 @@ const screenOptions = ({ route }) => ({
           ? 'list'
           : 'list-outline'; 
         break;
-      case 'Actions':
+      case 'Tasks':
         iconName = focused
           ? 'checkmark'
           : 'checkmark-outline'; 
@@ -108,7 +108,7 @@ export default function App() {
           <Tab.Navigator screenOptions={screenOptions} tabBarOptions={tabBarOptions}>
             <Tab.Screen name="Home" component={HomeStackScreen} />
             <Tab.Screen name="List" component={ListStackScreen} />
-            <Tab.Screen name="Actions" component={ActionStackScreen} />
+            <Tab.Screen name="Tasks" component={TaskStackScreen} />
           </Tab.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>

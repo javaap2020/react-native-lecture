@@ -7,7 +7,7 @@ import { SearchBar } from 'react-native-elements';
 import SearchList from './SearchList'
 
 import { useDispatch } from 'react-redux';
-import { fetchActions } from '../redux/actions/actions'
+import { fetchTasks } from '../redux/actions/tasks'
 
 const Home = ({navigation}) => {
 
@@ -22,8 +22,8 @@ const Home = ({navigation}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('-- fetch actions --')
-    dispatch(fetchActions())
+    console.log('-- fetch tasks --')
+    dispatch(fetchTasks())
   }, []);    
 
   return(
