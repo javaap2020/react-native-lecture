@@ -6,7 +6,8 @@ import { Text, View, Button } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import SearchList from './SearchList'
 
-
+import { useDispatch } from 'react-redux';
+import { fetchActions } from '../redux/actions/actions'
 
 const Home = ({navigation}) => {
 
@@ -17,6 +18,13 @@ const Home = ({navigation}) => {
     console.log(search);
     setKeyword(search);
   }, []);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log('-- fetch actions --')
+    dispatch(fetchActions())
+  }, []);    
 
   return(
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>

@@ -23,10 +23,13 @@ import createSagaMiddleware from 'redux-saga'
 import rootReducer from './redux/reducers'
 import rootSaga from './redux/sagas'
 
+
 const sagaMiddleWare = createSagaMiddleware()
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleWare))
 
 sagaMiddleWare.run(rootSaga)
+
+
 
 const Tab = createBottomTabNavigator();
 const ListStack = createStackNavigator();
@@ -94,6 +97,8 @@ const tabBarOptions= {
   activeTintColor: 'tomato',
   inactiveTintColor: 'gray',
 }
+
+
 
 export default function App() {
   return (
