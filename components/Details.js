@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { addAction, removeAction } from '../redux/actions/actions'
+import { addTask, removeTask } from '../redux/actions/tasks'
 
 import { LISTDATA } from '../shared/list'
 
@@ -26,13 +26,13 @@ const Details = ( { route, navigation }) => {
 
   const dispatch = useDispatch();
 
-  const actions = useSelector(state => state.actions);
-  console.log("--actions--");
-  console.log(actions);
+  const tasks = useSelector(state => state.tasks);
+  console.log("--tasks--");
+  console.log(tasks);
 
-  const isExistedAction = actions.filter(item => item.id == id).length > 0 ? true : false;
-  console.log("--isExistedAction--");
-  console.log(isExistedAction);
+  const isExistedTask = tasks.filter(item => item.id == id).length > 0 ? true : false;
+  console.log("--isExistedTask--");
+  console.log(isExistedTask);
 
   return (
     <View
@@ -51,20 +51,20 @@ const Details = ( { route, navigation }) => {
           {item.description}
         </Text>
         {
-          isExistedAction 
+          isExistedTask 
             ?
             <Button
-              onPress={()=>{dispatch(removeAction(id))}}
+              onPress={()=>{dispatch(removeTask(id))}}
               icon={<Icon name='close' type='ionicon' color='#ffffff' />}
               buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, backgroundColor:"gray"}}
-              title='REMOVE' 
+              title='REMOVE TASK' 
             /> 
             :
             <Button
-              onPress={()=>{dispatch(addAction(item))}}
+              onPress={()=>{dispatch(addTask(item))}}
               icon={<Icon name='checkmark' type='ionicon' color='#ffffff' />}
               buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, backgroundColor:"tomato"}}
-              title='ACTION' 
+              title='ADD TASK' 
             />    
         }
             

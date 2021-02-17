@@ -2,8 +2,8 @@
 // Like 목록을 제어하는 리듀서
 // likes.js
 
-// 액션 목록을 제어하는 리듀서
-// actions.js
+// 태스크 목록을 제어하는 리듀서
+// tasks.js
 
 // 리듀서
 // (현재state, action의리턴객체) => {
@@ -11,10 +11,10 @@
 //   return 변경할state 
 // }
 
-const actions = (state = [], action) => {
+const tasks = (state = [], action) => {
   // action의 type별로 state 제어
   switch (action.type) {
-    case 'ADD_ACTION':
+    case 'ADD_TASK':
       // return 변경할state
       // 현재 state를 복사하여 변경
       return [
@@ -26,7 +26,7 @@ const actions = (state = [], action) => {
           ...action.payload
         }
       ]
-    case 'REMOVE_ACTION':
+    case 'REMOVE_TASK':
       return [
         ...state.filter(item => item.id != action.payload)
       ]
@@ -35,4 +35,4 @@ const actions = (state = [], action) => {
   }
 }
 
-export default actions
+export default tasks
