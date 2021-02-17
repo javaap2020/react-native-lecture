@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import { ListItem, Avatar, Icon } from 'react-native-elements'
 import { ScrollView } from 'react-native-gesture-handler';
 
-import { removeAction } from '../redux/actions'
+import { removeAction } from '../redux/actions/actions'
 
 const Actions = ({navigation}) => {
 

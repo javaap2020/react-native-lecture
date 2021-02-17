@@ -3,8 +3,7 @@ import { Text, View } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { addAction } from '../redux/actions'
-import { removeAction } from '../redux/actions'
+import { addAction, removeAction } from '../redux/actions/actions'
 
 import { LISTDATA } from '../shared/list'
 
