@@ -27,7 +27,13 @@ const List = ({ navigation }) => {
            <ListItem 
             containerStyle={{width:"80%"}} 
             key={i}
-            onPress={()=>{navigation.navigate("Details", {id: item.id})}}
+            // stack -> stack 
+            // .navigate(스택이름, 매개변수객체)
+            onPress={()=>{navigation.navigate("Tasks", {id: item.id})}}
+            
+            // tab -> tab 
+            // .navigate(탭스크린이름, {params: 매개변수객체, screen: 스택스크린이름})
+            // onPress={()=>{navigation.navigate("Tasks", {params: {id: item.id}, screen: "Tasks"})}}
             >
              <Avatar source={{uri: item.image}} />
              <ListItem.Content>
