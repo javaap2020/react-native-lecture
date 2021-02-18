@@ -28,7 +28,7 @@ const List = ({ navigation }) => {
             containerStyle={{width:"80%"}} 
             key={i}
             // stack -> stack 
-            // .navigate(스택이름, 매개변수객체)
+            // .navigate(스택스크린이름, 매개변수객체)
             onPress={()=>{navigation.navigate("Tasks", {id: item.id})}}
             
             // tab -> tab 
