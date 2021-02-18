@@ -1,7 +1,16 @@
-export const addTask = payload => ({
+// ActionCreator
+export const addTask = payload => (
+  // Action
+  {
+   type: 'ADD_TASK',
+    payload
+  }
+)
+
+dispatch(  {
   type: 'ADD_TASK',
-  payload
-})
+   payload
+ })
 
 export const removeTask = payload => ({
   type: 'REMOVE_TASK',
