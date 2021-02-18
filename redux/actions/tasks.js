@@ -7,11 +7,6 @@ export const addTask = payload => (
   }
 )
 
-dispatch(  {
-  type: 'ADD_TASK',
-   payload
- })
-
 export const removeTask = payload => ({
   type: 'REMOVE_TASK',
   payload
