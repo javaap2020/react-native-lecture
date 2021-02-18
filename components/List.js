@@ -31,7 +31,7 @@ const List = ({ navigation }) => {
             // .navigate(스택스크린이름, 매개변수객체)
             onPress={()=>{navigation.navigate("Details", {id: item.id})}}
             
-            // tab>stack -> tab>stack 
+            // A tab> a stack -> B tab> a stack 
             // https://reactnavigation.org/docs/nesting-navigators/#passing-params-to-a-screen-in-a-nested-navigator
             // .navigate(탭스크린이름, {params: 매개변수객체, screen: 스택스크린이름})
             // onPress={()=>{navigation.navigate("Tasks", {params: {id: item.id}, screen: "Tasks"})}}
