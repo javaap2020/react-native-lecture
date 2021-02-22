@@ -49,20 +49,22 @@ const ListContainer = ({ navigation }) => {
     
     // clean-up function
     // 객체 소멸 함수
+
+    
+    // component가 unmount 되는 시점에 clean-up 함수가 실행됨
     // useEffect(()=>{ 
     //   ...
     //  
     //  return 함수
     // }, [])
     
-    // component가 unmount 되는 시점에 clean-up 함수가 실행됨
+    
 
-
-    return unsubscribe;
-
+    // navigation이 변경되는 시점에 clean-up 함수가 실행됨
     // return () => {
     //   navigation.removeListener(unsubscribe);
     // }
+    return unsubscribe;
   }, [navigation])
 
   return (
