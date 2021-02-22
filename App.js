@@ -9,7 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import Home from './components/Home'
-import List from './components/List'
+import List from './components/ListContainer'
 import Details from './components/Details'
 import Tasks from './components/Tasks'
 
