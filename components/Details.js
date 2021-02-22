@@ -1,4 +1,5 @@
-import React from 'react';
+import { apisAreAvailable } from 'expo';
+import React, { useEffect, useCallback, useState } from 'react';
 import { Text, View } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements'
 
@@ -6,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addTask, removeTask } from '../redux/actions/tasks'
 
 import { LISTDATA } from '../shared/list'
+
+import api from '../api/list'
 
 // 함수의 리턴 값이 JSX.Element면
 // React 컴포넌트가 된다.
@@ -21,8 +24,7 @@ const Details = ( { route, navigation }) => {
   // const id = route.params.id;
   const { id } = route.params;
 
-  const item = LISTDATA.filter(item => item.id == id)[0];
-  console.log(item);
+  const [item, setItem] = useState({});
 
   const dispatch = useDispatch();
 
@@ -33,6 +35,16 @@ const Details = ( { route, navigation }) => {
   const isExistedTask = tasks.filter(item => item.id == id).length > 0 ? true : false;
   console.log("--isExistedTask--");
   console.log(isExistedTask);
+
+  const getDetails = useCallback(async () => {
+    const result = await api.get(id);
+    console.log(result.data);
+    setItem(result.data);
+  }, [])
+
+  useEffect(()=>{
+    getDetails();
+  }, []);
 
   return (
     <View
