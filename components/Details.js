@@ -1,6 +1,6 @@
 import { apisAreAvailable } from 'expo';
 import React, { useEffect, useCallback, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, ProgressBarAndroid } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -24,7 +24,7 @@ const Details = ( { route, navigation }) => {
   // const id = route.params.id;
   const { id } = route.params;
 
-  const [item, setItem] = useState({});
+  const [item, setItem] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -39,7 +39,10 @@ const Details = ( { route, navigation }) => {
   const getDetails = useCallback(async () => {
     const result = await api.get(id);
     console.log(result.data);
-    setItem(result.data);
+    setTimeout(()=>{
+      setItem(result.data);
+    }, 300)
+    
   }, [])
 
   useEffect(()=>{
@@ -53,6 +56,8 @@ const Details = ( { route, navigation }) => {
         justifyContent: "center",
         alignItems: "center"
       }}>
+      { !item && <ProgressBarAndroid /> }
+      { item && 
       <Card>
         <Card.Title>{item.title}</Card.Title>
         <Card.Divider/>
@@ -81,6 +86,7 @@ const Details = ( { route, navigation }) => {
         }
             
       </Card>
+      }
     </View>
   )
 }
