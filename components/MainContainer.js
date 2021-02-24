@@ -13,7 +13,9 @@ import Tasks from './Tasks'
 
 // https://ionicons.com/
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useDispatch } from 'react-redux';
+import { Alert } from 'react-native'
+
+import { useDispatch, useSelector } from 'react-redux';
 
 const Tab = createBottomTabNavigator();
 const ListStack = createStackNavigator();
@@ -91,9 +93,23 @@ export default function Main() {
     dispatch({type:"FETCH_TASKS"})
   }, [])
 
+  const alert = useSelector(state => state.alert)
+  console.log('--alert--')
+  console.log(alert)
+
+  if(alert.isShow) {
+    Alert.alert(
+      "Errors",
+      alert.msg,
+      [
+        { text: "OK", onPress: () => dispatch({type:"CLOSE_ALERT"}) }
+      ],
+      { cancelable: false }
+    );
+  } 
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
+      <NavigationContainer>    
         <Tab.Navigator screenOptions={screenOptions} tabBarOptions={tabBarOptions}>
           <Tab.Screen name="Home" component={HomeStackScreen} />
           <Tab.Screen name="List" component={ListStackScreen} />
