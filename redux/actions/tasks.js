@@ -1,8 +1,8 @@
 // ActionCreator
 export const addTask = payload => (
-  // Action
+  // Action -> Design pattern: Command Pattern
   {
-   type: 'ADD_TASK',
+    type: 'ADD_TASK',
     payload
   }
 )
