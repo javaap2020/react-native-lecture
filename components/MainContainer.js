@@ -17,6 +17,8 @@ import { Alert } from 'react-native'
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import messaging from '@react-native-firebase/messaging';
+
 const Tab = createBottomTabNavigator();
 const ListStack = createStackNavigator();
 const HomeStack = createStackNavigator();
@@ -92,6 +94,21 @@ export default function Main() {
     // back-end에서 tasks 데이터를 가져오고, global state를 갱신
     dispatch({type:"FETCH_TASKS"})
   }, [])
+
+  useEffect(() => {
+
+    messaging().getToken()
+    .then(token => {
+      console.log("--token--");
+      console.log(token);
+    }); 
+
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    });
+
+    return unsubscribe;
+  }, []);  
 
   const alert = useSelector(state => state.alert)
   console.log('--alert--')

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "423657879901",
+    "project_id": "notificatio-lecture",
+    "storage_bucket": "notificatio-lecture.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423657879901:android:320e4a0a7cc8eadc5f10b4",
+        "android_client_info": {
+          "package_name": "com.reactnativelecture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "423657879901-b7jr4a4tn2au4kq848qli74sut4jf6v7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRLNxlhtSkaagDFHby9_gqhwocaLkQLZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "423657879901-b7jr4a4tn2au4kq848qli74sut4jf6v7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
