@@ -5,6 +5,10 @@ import { Text, View } from 'react-native';
 // https://github.com/Agontuk/react-native-geolocation-service
 import Geolocation from 'react-native-geolocation-service';
 
+// https://react-native-sensors.github.io/docs/Installation.html
+// https://react-native-sensors.github.io/docs/API.html
+import { accelerometer, setUpdateIntervalForType, SensorTypes } from "react-native-sensors";
+
 const HWTest = () => {
   const [location, setLocation] = useState({});
   console.log("--location--");
@@ -44,6 +48,16 @@ const HWTest = () => {
   
   useEffect(()=>{
     requestPermissions();
+
+    setUpdateIntervalForType(SensorTypes.accelerometer, 1000); // 1000ms
+    const subscription = accelerometer.subscribe(({ x, y, z, timestamp }) =>
+      console.log({ x, y, z, timestamp })
+    );
+    
+    // unmounting 됐을 실행되는 clean-up 함수
+    return (()=> {
+      subscription.remove();
+    })
   }, [])  
 
   return (
