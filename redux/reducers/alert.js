@@ -1,4 +1,4 @@
-const alert = (state = {isShow:false, msg:''}, action) =>{
+const alert = (state = { isShow: false, msg: '' }, action) => {
   switch (action.type) {
     case 'SHOW_ALERT':
       return {
@@ -11,7 +11,7 @@ const alert = (state = {isShow:false, msg:''}, action) =>{
         msg: ''
       }
     default:
-      return state      
+      return state
   }
 }
 

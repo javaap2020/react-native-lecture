@@ -28,8 +28,8 @@ const TaskStack = createStackNavigator();
 const HomeStackScreen = () => {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={Home} options={{title:"Home", headerTitleAlign:"center"}} />
-      <HomeStack.Screen name="Details" component={Details} options={{title:"Details", headerTitleAlign:"center"}}  />
+      <HomeStack.Screen name="Home" component={Home} options={{ title: "Home", headerTitleAlign: "center" }} />
+      <HomeStack.Screen name="Details" component={Details} options={{ title: "Details", headerTitleAlign: "center" }} />
     </HomeStack.Navigator>
   )
 }
@@ -37,8 +37,8 @@ const HomeStackScreen = () => {
 const ListStackScreen = () => {
   return (
     <ListStack.Navigator>
-      <ListStack.Screen name="List" component={List} options={{title:"List", headerTitleAlign:"center"}} />
-      <ListStack.Screen name="Details" component={Details} options={{title:"Details", headerTitleAlign:"center"}}  />
+      <ListStack.Screen name="List" component={List} options={{ title: "List", headerTitleAlign: "center" }} />
+      <ListStack.Screen name="Details" component={Details} options={{ title: "Details", headerTitleAlign: "center" }} />
     </ListStack.Navigator>
   )
 }
@@ -46,8 +46,8 @@ const ListStackScreen = () => {
 const TaskStackScreen = () => {
   return (
     <TaskStack.Navigator>
-      <TaskStack.Screen name="Tasks" component={Tasks} options={{title:"Tasks", headerTitleAlign:"center"}} />
-      <TaskStack.Screen name="Details" component={Details} options={{title:"Details", headerTitleAlign:"center"}}  />
+      <TaskStack.Screen name="Tasks" component={Tasks} options={{ title: "Tasks", headerTitleAlign: "center" }} />
+      <TaskStack.Screen name="Details" component={Details} options={{ title: "Details", headerTitleAlign: "center" }} />
     </TaskStack.Navigator>
   )
 }
@@ -58,36 +58,36 @@ const screenOptions = ({ route }) => ({
   tabBarIcon: ({ focused, color, size }) => {
     let iconName;
 
-    switch(route.name){
+    switch (route.name) {
       // focus가 있으면 'home', 'home-outline'
       case 'Home':
         iconName = focused
           ? 'home'
-          : 'home-outline';        
+          : 'home-outline';
         break;
       case 'List':
         iconName = focused
           ? 'list'
-          : 'list-outline'; 
+          : 'list-outline';
         break;
       case 'Tasks':
         iconName = focused
           ? 'checkmark'
-          : 'checkmark-outline'; 
+          : 'checkmark-outline';
         break;
       case 'HWTest':
         iconName = focused
           ? 'hardware-chip'
-          : 'hardware-chip-outline'; 
-        break;                
+          : 'hardware-chip-outline';
+        break;
     }
-    
+
     // You can return any component that you like here!
     return <Ionicons name={iconName} size={size} color={color} />;
   },
 })
 
-const tabBarOptions= {
+const tabBarOptions = {
   activeTintColor: 'tomato',
   inactiveTintColor: 'gray',
 }
@@ -95,44 +95,44 @@ const tabBarOptions= {
 export default function Main() {
   const dispatch = useDispatch();
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log("-- main is mounted--")
     // back-end에서 tasks 데이터를 가져오고, global state를 갱신
-    dispatch({type:"FETCH_TASKS"})
+    dispatch({ type: "FETCH_TASKS" })
   }, [])
 
   useEffect(() => {
 
     messaging().getToken()
-    .then(token => {
-      console.log("--token--");
-      console.log(token);
-    }); 
+      .then(token => {
+        console.log("--token--");
+        console.log(token);
+      });
 
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
     });
 
     return unsubscribe;
-  }, []);  
+  }, []);
 
   const alert = useSelector(state => state.alert)
   console.log('--alert--')
   console.log(alert)
 
-  if(alert.isShow) {
+  if (alert.isShow) {
     Alert.alert(
       "Errors",
       alert.msg,
       [
-        { text: "OK", onPress: () => dispatch({type:"CLOSE_ALERT"}) }
+        { text: "OK", onPress: () => dispatch({ type: "CLOSE_ALERT" }) }
       ],
       { cancelable: false }
     );
-  } 
+  }
   return (
     <SafeAreaProvider>
-      <NavigationContainer>    
+      <NavigationContainer>
         <Tab.Navigator screenOptions={screenOptions} tabBarOptions={tabBarOptions}>
           <Tab.Screen name="Home" component={HomeStackScreen} />
           <Tab.Screen name="List" component={ListStackScreen} />

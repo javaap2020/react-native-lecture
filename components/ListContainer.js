@@ -14,7 +14,7 @@ const ListContainer = ({ navigation }) => {
   // 백엔드에 API요청후 응답 받은 데이터
   // 데이터를 받으면 화면을 다시 렌더링한다.
   // state 처리
-  const [list, setList] = useState([]);  
+  const [list, setList] = useState([]);
 
   //, [] <- 함수가 재생성될 조건
   //, [] <- 컴포넌트가 처음 마운트 됐을 때만 생성
@@ -36,7 +36,7 @@ const ListContainer = ({ navigation }) => {
   //   getList();
   // }, [])
 
-  useEffect(()=>{
+  useEffect(() => {
     // navigation 이벤트 리스너를 생성
     // 반환 값이 이벤트 리스너 해제 함수
     const unsubscribe = navigation.addListener(
@@ -46,19 +46,19 @@ const ListContainer = ({ navigation }) => {
         getList();
       }
     )
-    
+
     // clean-up function
     // 객체 소멸 함수
 
-    
+
     // component가 unmount 되는 시점에 clean-up 함수가 실행됨
     // useEffect(()=>{ 
     //   ...
     //  
     //  return 함수
     // }, [])
-    
-    
+
+
 
     // navigation이 변경되는 시점에 clean-up 함수가 실행됨
     // return () => {

@@ -18,7 +18,7 @@ sagaMiddleWare.run(rootSaga)
 export default function App() {
   return (
     <Provider store={store}>
-       {/* useDispatch, useSelector 안 됨 */}
+      {/* useDispatch, useSelector 안 됨 */}
       <Main />
     </Provider>
   );

@@ -20,7 +20,7 @@ const tasks = (state = [], action) => {
       return [
         // state 배열 요소들을 카피 
         // state == [{}, {}] ...state -> {}, {}
-        ...state, 
+        ...state,
         // paylod 객체 카피
         {
           ...action.payload
